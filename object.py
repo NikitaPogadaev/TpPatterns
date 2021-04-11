@@ -132,7 +132,7 @@ class Egg(Place_Obj):
 
 class Gold(Place_Obj):
 
-    def __init__(self, x=25, y=25, ind=True, col = 100):
+    def __init__(self, x=25, y=25, ind=True, col=100):
         super().__init__()
         self.x_pose = x
         self.y_pose = y
@@ -212,6 +212,25 @@ class Multi_cast:
         self.a.buff(ar)
         self.b.buff(ar)
         ar.money -= self.cost
+
+
+class MAP:
+
+    def __init__(self):
+        self.map = OrderedDict()
+        self.Shld = Shield()
+        self.red_DMG_buff = Attack_buff()
+        self.blue_Def_buff = Def_buff()
+        self.map[(0, 0)] = Red_castle()
+        self.map[(0, 50)] = Blue_castle()
+        for i in range(22, 29):
+            for j in range(22, 29):
+                self.map[(i, j)] = Swamp()
+        self.map[(25, 25)] = Egg()
+        for i in range(40):
+            self.map[(random.randint(0, 20), random.randint(10, 40))] = Gold(col=random.randint(50, 100))
+        for i in range(40):
+            self.map[(random.randint(30, 50), random.randint(10, 40))] = Gold(col=random.randint(50, 100))
 
 
 class UnitTest(unittest.TestCase):
