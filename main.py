@@ -20,6 +20,7 @@ class CUnits:
     def walk(self, x, y):
         pass
 
+    @abstractmethod
     def get_HP(self):
         pass
 
@@ -210,97 +211,6 @@ class Humans(CUnits):
     def __init__(self):
         super().__init__()
 
-    @abstractmethod
-    def get_count(self):
-        pass
-
-    @abstractmethod
-    def set_count(self, x):
-        pass
-
-    @abstractmethod
-    def get_pay(self):
-        pass
-
-    @abstractmethod
-    def set_pay(self, x):
-        pass
-
-    @abstractmethod
-    def walk(self, x, y):
-        pass
-
-    @abstractmethod
-    def get_HP(self):
-        pass
-
-    @abstractmethod
-    def set_HP(self, x):
-        pass
-
-    @abstractmethod
-    def get_Speed(self):
-        pass
-
-    @abstractmethod
-    def set_Speed(self, x):
-        pass
-
-    @abstractmethod
-    def get_Def(self):
-        pass
-
-    @abstractmethod
-    def set_Def(self, x):
-        pass
-
-    @abstractmethod
-    def get_pose_x(self):
-        pass
-
-    @abstractmethod
-    def set_pose_x(self, x):
-        pass
-
-    @abstractmethod
-    def get_pose_y(self):
-        pass
-
-    @abstractmethod
-    def set_pose_y(self, x):
-        pass
-
-    def get_tip(self):
-        return self.tip
-
-    @abstractmethod
-    def get_DMG(self):
-        pass
-
-    @abstractmethod
-    def set_DMG(self, x):
-        pass
-
-    def get_attack_tip(self):
-        return self.attack_tip
-
-
-class Swordman(Humans):
-
-    def __init__(self, x=0, y=0, col='white', n=0):
-        super().__init__()
-        self.HP = 16
-        self.Def = 10
-        self.Speed = 6
-        self.DMG = 14
-        self.pose_x = x
-        self.pose_y = y
-        self.count = n
-        self.pay = 10
-        self.tip = 'Sw'
-        self.attack_tip = 'attack'
-        self.color = col
-
     def get_color(self):
         return self.color
 
@@ -364,6 +274,24 @@ class Swordman(Humans):
     def walk(self, x, y):
         self.set_pose_x(x)
         self.set_pose_y(y)
+
+
+class Swordman(Humans):
+
+    def __init__(self, x=0, y=0, col='white', n=0):
+        super().__init__()
+        self.HP = 16
+        self.Def = 10
+        self.Speed = 6
+        self.DMG = 14
+        self.pose_x = x
+        self.pose_y = y
+        self.count = n
+        self.pay = 10
+        self.tip = 'Sw'
+        self.attack_tip = 'attack'
+        self.color = col
+
 
     def attack(self, kek):
         temp = kek.get_HP()
@@ -388,69 +316,6 @@ class Archer(Humans):
         self.attack_tip = 'shot'
         self.color = col
 
-    def get_color(self):
-        return self.color
-
-    def set_color(self, x):
-        self.color = x
-
-    def get_count(self):
-        return self.count
-
-    def set_count(self, x):
-        self.count = x
-
-    def get_pay(self):
-        return self.pay
-
-    def set_pay(self, x):
-        self.pay = x
-
-    def get_HP(self):
-        return self.HP * self.count
-
-    def set_HP(self, x):
-        self.count = x // self.HP
-
-    def get_Speed(self):
-        return self.Speed
-
-    def set_Speed(self, x):
-        self.Speed = x
-
-    def get_Def(self):
-        return self.Def * self.count
-
-    def set_Def(self, x):
-        self.Def = x
-
-    def get_pose_x(self):
-        return self.pose_x
-
-    def set_pose_x(self, x):
-        self.pose_x = x
-
-    def get_pose_y(self):
-        return self.pose_y
-
-    def set_pose_y(self, x):
-        self.pose_y = x
-
-    def get_tip(self):
-        return self.tip
-
-    def get_DMG(self):
-        return self.DMG * self.count
-
-    def set_DMG(self, x):
-        self.DMG = x
-
-    def get_attack_tip(self):
-        return self.attack_tip
-
-    def walk(self, x, y):
-        self.set_pose_x(x)
-        self.set_pose_y(y)
 
     def shot(self, kek):
         temp = kek.get_HP()
@@ -474,69 +339,6 @@ class Shaman(Humans):
         self.attack_tip = 'heal'
         self.color = col
 
-    def get_color(self):
-        return self.color
-
-    def set_color(self, x):
-        self.color = x
-
-    def get_count(self):
-        return self.count
-
-    def set_count(self, x):
-        self.count = x
-
-    def get_pay(self):
-        return self.pay
-
-    def set_pay(self, x):
-        self.pay = x
-
-    def get_HP(self):
-        return self.HP * self.count
-
-    def set_HP(self, x):
-        self.count = x // self.HP
-
-    def get_Speed(self):
-        return self.Speed
-
-    def set_Speed(self, x):
-        self.Speed = x
-
-    def get_Def(self):
-        return self.Def * self.count
-
-    def set_Def(self, x):
-        self.Def = x
-
-    def get_pose_x(self):
-        return self.pose_x
-
-    def set_pose_x(self, x):
-        self.pose_x = x
-
-    def get_pose_y(self):
-        return self.pose_y
-
-    def set_pose_y(self, x):
-        self.pose_y = x
-
-    def get_tip(self):
-        return self.tip
-
-    def get_DMG(self):
-        return self.DMG * self.count
-
-    def set_DMG(self, x):
-        self.DMG = x
-
-    def get_attack_tip(self):
-        return self.attack_tip
-
-    def walk(self, x, y):
-        self.set_pose_x(x)
-        self.set_pose_y(y)
 
     def heal(self, kek):
         temp = kek.get_HP()
@@ -561,56 +363,6 @@ class Thief(Humans):
         self.color = col
         self.garbage = 0
 
-    def get_color(self):
-        return self.color
-
-    def set_color(self, x):
-        self.color = x
-
-    def get_count(self):
-        return self.count
-
-    def set_count(self, x):
-        self.count = x
-
-    def get_pay(self):
-        return self.pay
-
-    def set_pay(self, x):
-        self.pay = x
-
-    def get_HP(self):
-        return self.HP * self.count
-
-    def set_HP(self, x):
-        self.count = x // self.HP
-
-    def get_Speed(self):
-        return self.Speed
-
-    def set_Speed(self, x):
-        self.Speed = x
-
-    def get_Def(self):
-        return self.Def * self.count
-
-    def set_Def(self, x):
-        self.Def = x
-
-    def get_pose_x(self):
-        return self.pose_x
-
-    def set_pose_x(self, x):
-        self.pose_x = x
-
-    def get_pose_y(self):
-        return self.pose_y
-
-    def set_pose_y(self, x):
-        self.pose_y = x
-
-    def get_tip(self):
-        return self.tip
 
     def get_DMG(self):
         return (self.DMG + self.garbage * 2) * self.count
@@ -618,19 +370,11 @@ class Thief(Humans):
     def set_DMG(self, x):
         self.DMG = x
 
-    def get_attack_tip(self):
-        return self.attack_tip
-
     def get_garbage(self):
         return self.garbage
 
     def set_garbage(self, x):
         self.garbage = x
-
-    def walk(self, x, y):
-
-        self.set_pose_x(x)
-        self.set_pose_y(y)
 
     def steal(self, kek):
         temp = kek.get_HP()
@@ -912,10 +656,10 @@ class CArmy_Red(CArmy):
             self.size += 1
             temp = self.KurF.Beast_create_Red(x1, y1)
             self.tact[h] = temp
-#        self.moral += 1
-#        self.total_DMG += temp.get_DMG()
-#        self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        self.is_Beast = 1
+            self.moral += 1
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.is_Beast = 1
 
     def add_Shukaku(self, x1=25, y1=25):
         h = (x1, y1)
@@ -923,10 +667,10 @@ class CArmy_Red(CArmy):
             self.size += 1
             temp = self.ShuF.Beast_create_Red(x1, y1)
             self.tact[h] = temp
-#        self.moral += 1
-#        self.total_DMG += temp.get_DMG()
-#       self.total_PRT += (temp.get_Def() + temp.get_HP())
-#       self.is_Beast = 1
+            self.moral += 1
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.is_Beast = 1
 
     def add_Swordman(self, x1=25, y1=25, n=1):
         h = (x1, y1)
@@ -934,9 +678,9 @@ class CArmy_Red(CArmy):
             self.size += 1
             temp = self.SwordF.Human_create_Red(n, x1, y1)
             self.tact[h] = temp
-#        self.total_DMG += temp.get_DMG()
-#        self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        self.money -= n * temp.get_pay()
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.money -= n * temp.get_pay()
 
     def add_Archer(self, x1=25, y1=25, n=1):
         h = (x1, y1)
@@ -944,9 +688,9 @@ class CArmy_Red(CArmy):
             self.size += 1
             temp = self.ArF.Human_create_Red(n, x1, y1)
             self.tact[h] = temp
-#        self.total_DMG += temp.get_DMG()
-#        self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        self.money -= n * temp.get_pay()
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.money -= n * temp.get_pay()
 
     def add_Shaman(self, x1=25, y1=25, n=1):
         h = (x1, y1)
@@ -954,9 +698,9 @@ class CArmy_Red(CArmy):
             self.size += 1
             temp = self.ShaF.Human_create_Red(n, x1, y1)
             self.tact[h] = temp
-#        #self.total_DMG += temp.get_DMG()
-#        #self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        #self.money -= n * temp.get_pay()
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.money -= n * temp.get_pay()
 
     def add_Thief(self, x1=25, y1=25, n=1):
         h = (x1, y1)
@@ -964,9 +708,9 @@ class CArmy_Red(CArmy):
             self.size += 1
             temp = self.ThF.Human_create_Red(n, x1, y1)
             self.tact[h] = temp
-#       #self.total_DMG += temp.get_DMG()
-#        #self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        #self.money -= n * temp.get_pay()
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.money -= n * temp.get_pay()
 
     def get_Unit(self, x1=0, y1=0):
         h = (x1, y1)
@@ -976,6 +720,8 @@ class CArmy_Red(CArmy):
     def del_Unit(self, x1=0, y1=0):
         h = (x1, y1)
         if self.tact.get(h):
+            self.total_DMG -= self.tact.get(h).get_DMG()
+            self.total_PRT -= self.tact.get(h).get_Def()
             self.tact.pop(h)
 
 
@@ -1037,10 +783,10 @@ class CArmy_Blue(CArmy):
             self.size += 1
             temp = self.KurF.Beast_create_Blue(x1, y1)
             self.tact[h] = temp
-#        self.moral += 1
-#        self.total_DMG += temp.get_DMG()
-#        self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        self.is_Beast = 1
+            self.moral += 1
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.is_Beast = 1
 
     def add_Shukaku(self, x1=25, y1=25):
         h = (x1, y1)
@@ -1048,10 +794,10 @@ class CArmy_Blue(CArmy):
             self.size += 1
             temp = self.ShuF.Beast_create_Blue(x1, y1)
             self.tact[h] = temp
-#        self.moral += 1
-#        self.total_DMG += temp.get_DMG()
-#       self.total_PRT += (temp.get_Def() + temp.get_HP())
-#       self.is_Beast = 1
+            self.moral += 1
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.is_Beast = 1
 
     def add_Swordman(self, x1=25, y1=25, n=1):
         h = (x1, y1)
@@ -1059,9 +805,9 @@ class CArmy_Blue(CArmy):
             self.size += 1
             temp = self.SwordF.Human_create_Blue(n, x1, y1)
             self.tact[h] = temp
-#        self.total_DMG += temp.get_DMG()
-#        self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        self.money -= n * temp.get_pay()
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.money -= n * temp.get_pay()
 
     def add_Archer(self, x1=25, y1=25, n=1):
         h = (x1, y1)
@@ -1069,9 +815,9 @@ class CArmy_Blue(CArmy):
             self.size += 1
             temp = self.ArF.Human_create_Blue(n, x1, y1)
             self.tact[h] = temp
-#        self.total_DMG += temp.get_DMG()
-#        self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        self.money -= n * temp.get_pay()
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.money -= n * temp.get_pay()
 
     def add_Shaman(self, x1=25, y1=25, n=1):
         h = (x1, y1)
@@ -1079,9 +825,9 @@ class CArmy_Blue(CArmy):
             self.size += 1
             temp = self.ShaF.Human_create_Blue(x1, y1)
             self.tact[h] = temp
-#        #self.total_DMG += temp.get_DMG()
-#        #self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        #self.money -= n * temp.get_pay()
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.money -= n * temp.get_pay()
 
     def add_Thief(self, x1=25, y1=25, n=1):
         h = (x1, y1)
@@ -1089,9 +835,9 @@ class CArmy_Blue(CArmy):
             self.size += 1
             temp = self.ThF.Human_create_Blue(n, x1, y1)
             self.tact[h] = temp
-#       #self.total_DMG += temp.get_DMG()
-#        #self.total_PRT += (temp.get_Def() + temp.get_HP())
-#        #self.money -= n * temp.get_pay()
+            self.total_DMG += temp.get_DMG()
+            self.total_PRT += temp.get_Def()
+            self.money -= n * temp.get_pay()
 
     def get_Unit(self, x1=0, y1=0):
         h = (x1, y1)
@@ -1101,6 +847,8 @@ class CArmy_Blue(CArmy):
     def del_Unit(self, x1=0, y1=0):
         h = (x1, y1)
         if self.tact.get(h):
+            self.total_DMG -= self.tact.get(h).get_DMG()
+            self.total_PRT -= self.tact.get(h).get_Def()
             self.tact.pop(h)
 
 
@@ -1230,9 +978,12 @@ class UnitTest(unittest.TestCase):
             RArmy.add_Kurama(100, i)
         h3 = (100, 50)
         self.assertEqual(RArmy.get_size(), 31)
-        self.assertIsNone(RArmy.tact.get(h3))
-        RArmy.del_Unit(h2)
-        self.assertIsNone(RArmy.tact.get(h3))
+        self.assertIsNone(RArmy.get_Unit(h3[0], h3[1]))
+        RArmy.del_Unit(h2[0], h2[1])
+        self.assertIsNone(RArmy.tact.get(h2))
+        RArmy.add_Shukaku(100, 100)
+        RArmy.add_Shukaku(1000, 1000)
+        self.assertIsNone(RArmy.tact.get((1000, 1000)))
 
 
 if __name__ == '__main__':
