@@ -88,7 +88,7 @@ class Red_castle(Place_Obj):
     def get_HP(self):
         return self.HP
 
-    def get_clor(self):
+    def get_color(self):
         return self.color
 
 
@@ -109,7 +109,7 @@ class Blue_castle(Place_Obj):
     def get_HP(self):
         return self.HP
 
-    def get_clor(self):
+    def get_color(self):
         return self.color
 
 
@@ -187,6 +187,9 @@ class Def_buff(Spell):
         self.cost = self.cost * 2
         ar.total_Def *= 2
 
+    def get_cost(self):
+        return self.cost
+
 
 class Attack_buff(Spell):
 
@@ -203,6 +206,9 @@ class Attack_buff(Spell):
         ar.money -= self.cost
         self.cost = self.cost * 2
 
+    def get_cost(self):
+        return self.cost
+
 class Multi_cast:
     a = Def_buff()
     b = Attack_buff()
@@ -212,6 +218,9 @@ class Multi_cast:
         self.a.buff(ar)
         self.b.buff(ar)
         ar.money -= self.cost
+
+    def get_cost(self):
+        return self.cost + self.a.cost + self.a.cost
 
 
 class MAP:
